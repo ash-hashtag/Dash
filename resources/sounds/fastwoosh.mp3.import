@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/fastwoosh.mp3-1c5da721b585639aa7c85198df9cff9b.mp3str"
+
+[deps]
+
+source_file="res://resources/sounds/fastwoosh.mp3"
+dest_files=[ "res://.import/fastwoosh.mp3-1c5da721b585639aa7c85198df9cff9b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
