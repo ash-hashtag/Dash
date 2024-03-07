@@ -4,29 +4,29 @@ var ppos = Vector2()
 var isgmovr = false
 var hscor = 0
 var scor = 0
-onready var scrn = get_viewport_rect().size * 1.5
+@onready var scrn = get_viewport_rect().size * 1.5
 var dic = { "highscore" : 0, "i" : 0, "showfps" : false, "audio" : true}
-onready var player = get_node("player")
-onready var bt = $CanvasLayer/Control/bt
-onready var scrtxt = get_node("CanvasLayer/Control/SC/score")
-onready var hs = get_node("CanvasLayer/Control/SC/highscore")
-onready var ps = preload("res://scenes/particles.tscn")
-onready var tri = preload("res://Trian.tscn").instance()
-onready var pause_icons = [preload("res://resources/pause_sign.png"), preload("res://resources/play_button.png")]
-onready var fps = get_node("CanvasLayer/Control/SC/fpstxt")
-onready var fpsshow_button = get_node("CanvasLayer/Control/showfps")
-onready var anim = get_node("CanvasLayer/Control/AnimationPlayer")
+@onready var player = get_node("player")
+@onready var bt = $CanvasLayer/Control/bt
+@onready var scrtxt = get_node("CanvasLayer/Control/SC/score")
+@onready var hs = get_node("CanvasLayer/Control/SC/highscore")
+@onready var ps = preload("res://scenes/particles.tscn")
+@onready var tri = preload("res://Trian.tscn").instantiate()
+@onready var pause_icons = [preload("res://resources/pause_sign.png"), preload("res://resources/play_button.png")]
+@onready var fps = get_node("CanvasLayer/Control/SC/fpstxt")
+@onready var fpsshow_button = get_node("CanvasLayer/Control/showfps")
+@onready var anim = get_node("CanvasLayer/Control/AnimationPlayer")
 const usrpath = "user://score.dat"
-onready var lava := $lava
-onready var lava_limit = $lava/Node2D
-onready var color_rect := $CanvasLayer/Control/ColorRect
-onready var shock := $CanvasLayer/Control/shockwave
+@onready var lava := $lava
+@onready var lava_limit = $lava/Node2D
+@onready var color_rect := $CanvasLayer/Control/ColorRect
+@onready var shock := $CanvasLayer/Control/shockwave
 
 func _ready():
 	Globals.scrn = get_viewport().size * 1.5
 	Globals.halfScrn = Vector2(int(scrn.x) >> 1, int(scrn.y) >> 1)
 	if !Globals.audio: 
-		$CanvasLayer/Control/audio.pressed = true
+		$CanvasLayer/Control/audio.button_pressed = true
 	$CanvasLayer/Control/audio.visible = false
 	var point = preload("res://scenes/point.tscn")
 	var enemy = preload("res://scenes/enemy.tscn")
@@ -37,8 +37,8 @@ func _ready():
 	fpsshow_button.visible = false
 
 	for i in 6:
-		var poin = point.instance()
-		var enm = enemy.instance()
+		var poin = point.instantiate()
+		var enm = enemy.instantiate()
 		enm.global_position = Globals.randpos()
 		poin.global_position = Globals.randpos()
 		self.call_deferred("add_child", enm)
@@ -46,10 +46,10 @@ func _ready():
 	fps.visible = false
 	loaddata()
 	dic.i = Globals.i
-	print(fps.visible)
+	print("Fps Visible: " , fps.visible)
 	savedata()
-	scrtxt.text = String(scor)
-	hs.text = String(hscor)
+	scrtxt.text = str(scor)
+	hs.text = str(hscor)
 
 	tri.global_position = Globals.randpos()
 	self.call_deferred("add_child", tri)
@@ -59,7 +59,7 @@ func _ready():
 
 func _process(_delta):
 	if fps.visible:
-		fps.text = str(Engine.get_frames_per_second())
+		fps.text = "FPS: " + str(Engine.get_frames_per_second())
 	ppos = player.global_position
 	if !isgmovr:
 		if ppos.y > lava_limit.global_position.y:
@@ -74,6 +74,8 @@ func _process(_delta):
 			lava.global_position.x = ppos.x
 
 func gmovr():
+	if randf() > 0.3:
+		Admanager.show_interstitial_ad()
 	if Globals.audio:
 		player.get_node("AudioStreamPlayer2D").play()
 	dic.audio = Globals.audio
@@ -86,13 +88,13 @@ func gmovr():
 	bt.visible = true
 	$Timer.stop()
 
-func score(var pos, var vel, var id):
+func score(pos, vel, id):
 	var p = instance_from_id(id)
 	call_deferred("remove_child", p)
 	anim.play("tween")
 	p.global_position = Globals.randpos(ppos)
 	self.call_deferred("add_child", p)
-	var psi = ps.instance()
+	var psi = ps.instantiate()
 	psi.global_position = pos
 	if Globals.audio:
 		psi.vol = vel
@@ -102,48 +104,31 @@ func score(var pos, var vel, var id):
 	scor += 10
 	if scor >= hscor:
 		hscor = scor
-	scrtxt.text = String(scor)
-	hs.text = String(hscor)
+	scrtxt.text = str(scor)
+	hs.text = str(hscor)
 	var _pos = player.get_global_transform_with_canvas().origin
 	anim.play("shock")
 
-#func ranpos():
-#	var randpos = Vector2.ZERO
-#	var dif = 50
-#	randomize()
-#	if rand_range(0,2) > 1:
-#		randpos.x = ppos.x + rand_range(-scrn.x / 2, scrn.x / 2)
-#		randomize()
-#		if rand_range(0, 2) > 1:
-#			randpos.y = ppos.y + scrn.y / 2 + dif
-#		else:
-#			randpos.y = ppos.y - scrn.y / 2 - dif
-#	else:
-#		randpos.y = ppos.y + rand_range(-scrn.y / 2, scrn.y / 2)
-#		randomize()
-#		if rand_range(0, 2) < 1:
-#			randpos.x = ppos.x + scrn.x / 2 + dif
-#		else:
-#			randpos.x = ppos.x - scrn.x / 2 - dif
-#	return randpos
 
 func savedata():
-	var file = File.new()
-	var error = file.open_encrypted_with_pass(usrpath, File.WRITE, "1234")
-	if error == OK:
+	var file = FileAccess.open_encrypted_with_pass(usrpath, FileAccess.WRITE, "1234")
+	if file == null:
+		printerr("Failed to open file for saving data " + str(FileAccess.get_open_error()))
+	else:
 		file.store_var(dic)
 		file.close()	
 
 func loaddata():
-	var file = File.new()
-	if file.file_exists(usrpath):
-		var error = file.open_encrypted_with_pass(usrpath, File.READ, "1234")
-		if error == OK:
+	if FileAccess.file_exists(usrpath):
+		var file = FileAccess.open_encrypted_with_pass(usrpath, FileAccess.READ, "1234")
+		if file != null:
 			dic = file.get_var()
 			hscor = dic.highscore
 			#Globals.audio = dic.audio
 			fps.visible = dic.showfps
 			file.close()
+		else:
+			printerr("Failed to open file for loading data " + str(FileAccess.get_open_error()))
 
 func _on_Button_button_down():
 	if isgmovr || Engine.time_scale == 0:
@@ -153,7 +138,7 @@ func _on_Button_button_down():
 func _on_Button2_button_down():
 	Engine.time_scale = 1
 	savedata()
-	get_tree().change_scene("res://scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 
 func _on_pause_button_down():
 	$CanvasLayer/Control/pause.modulate = Color(1, 1, 1, 0.86)
@@ -180,7 +165,7 @@ func _on_showfps_button_down():
 		fps.visible = false
 		fpsshow_button.modulate = Color(1, 1, 1, 0.86)
 	dic.showfps = fps.visible
-	print(fps.visible)
+	print("Fps Visible: ", fps.visible)
 
 func _on_pause_button_up():
 	if Engine.time_scale == 1:
@@ -196,12 +181,13 @@ func _on_pause_button_up():
 		bt.visible = false
 		fpsshow_button.visible = false
 		$CanvasLayer/Control/audio.visible = false
-	print(fps.visible)
+	print("Fps Visible: ",  fps.visible)
 
 
 func _on_watchad_button_down():
 	#play ad
-	$CanvasLayer/Control/bt/watchad.text = "Ads are not available at the moment"
+	#$CanvasLayer/Control/bt/watchad.text = "Ads are not available at the moment"
+	Admanager.show_rewarded_ad(OnUserEarnedRewardListener.new())
 	pass
 
 

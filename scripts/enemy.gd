@@ -1,13 +1,17 @@
 extends RigidBody2D
 
-onready var main = get_parent()
-onready var player = get_node("../player")
-onready var line = get_node("Line2D")
+@onready var main = get_parent()
+@onready var player = get_node("../player")
+@onready var line = get_node("Line2D")
 var dir
 
 func _process(delta):
+	if Engine.time_scale != 1:
+		pass
 	dir = main.ppos - global_position
-	linear_velocity = dir.normalized() * 100
+	var vel = dir.normalized() * 100
+	linear_velocity = vel
+	#move_and_collide(dir.normalized())
 	line.global_position = Vector2.ZERO
 	line.global_rotation = 0
 	line.add_point(global_position)

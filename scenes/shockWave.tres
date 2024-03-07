@@ -1,8 +1,8 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b2dxgb2g506wk"]
 
-[sub_resource type="Shader" id=16]
+[sub_resource type="Shader" id="16"]
 code = "shader_type canvas_item;
-
+uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear_mipmap;
 uniform vec2 center;
 uniform float force;
 uniform float size;
@@ -18,8 +18,8 @@ void fragment(){
 }"
 
 [resource]
-shader = SubResource( 16 )
-shader_param/center = Vector2( 0.5, 0.5 )
-shader_param/force = 0.1
-shader_param/size = 0.0
-shader_param/thickness = 0.005
+shader = SubResource("16")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/force = 0.1
+shader_parameter/size = null
+shader_parameter/thickness = 0.005

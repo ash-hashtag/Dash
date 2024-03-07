@@ -10,7 +10,7 @@ _data = [ Vector2( 0, 0.714773 ), 0.0, 1.20227, 0, 0, Vector2( 0.353261, 1 ), 0.
 width = 32
 curve = SubResource( 1 )
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticleProcessMaterial" id=3]
 flag_disable_z = true
 direction = Vector3( 0, 0, 0 )
 spread = 180.0
@@ -24,7 +24,7 @@ orbit_velocity_random = 0.0
 scale_curve = SubResource( 2 )
 color = Color( 0, 1, 1, 1 )
 
-[node name="Particles2D" type="Particles2D"]
+[node name="GPUParticles2D" type="GPUParticles2D"]
 scale = Vector2( 20, 20 )
 emitting = false
 amount = 10

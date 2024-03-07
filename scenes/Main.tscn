@@ -1,309 +1,387 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=3 uid="uid://c1utx3knit8k5"]
 
-[ext_resource path="res://scripts/Main.gd" type="Script" id=1]
-[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://resources/Oswald-VariableFont_wght.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://resources/sounds/mixkit-short-buzzer-sound-2963.wav" type="AudioStream" id=4]
-[ext_resource path="res://resources/pause_sign.png" type="Texture" id=5]
-[ext_resource path="res://resources/font.tres" type="DynamicFont" id=6]
-[ext_resource path="res://resources/audio_on.png" type="Texture" id=7]
-[ext_resource path="res://resources/audio_off.png" type="Texture" id=8]
-[ext_resource path="res://resources/square.png" type="Texture" id=9]
-[ext_resource path="res://resources/splash.png" type="Texture" id=10]
-[ext_resource path="res://scenes/shockWave.tres" type="Material" id=11]
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2"]
+[ext_resource type="FontFile" uid="uid://r1m8evt7twoo" path="res://resources/Oswald-VariableFont_wght.ttf" id="3"]
+[ext_resource type="AudioStream" uid="uid://cnf81j7axmvhc" path="res://resources/sounds/mixkit-short-buzzer-sound-2963.wav" id="4"]
+[ext_resource type="Texture2D" uid="uid://coypsgwrk3yp3" path="res://resources/pause_sign.png" id="5"]
+[ext_resource type="FontFile" path="res://resources/font.tres" id="6"]
+[ext_resource type="Texture2D" uid="uid://bxuc2cotw5rd0" path="res://resources/audio_on.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dt5aa3l3usggu" path="res://resources/audio_off.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://c6wxl5qjjjt1k" path="res://resources/square.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://dc1hw6dmlapxl" path="res://resources/splash.png" id="10"]
+[ext_resource type="Material" uid="uid://b2dxgb2g506wk" path="res://scenes/shockWave.tres" id="11"]
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id="12"]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("SC/score:custom_fonts/font:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("SC/score:theme_override_fonts/font:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ 100 ]
+"values": [100]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("shockwave:material:shader_param/size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ 0.0 ]
+"values": [0.0]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id="16"]
 resource_name = "shock"
 length = 0.5
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("shockwave:material:shader_param/size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ 0.0, 1.5 ]
+"values": [0.0, 1.5]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id="13"]
 resource_name = "tween"
 length = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("SC/score:custom_fonts/font:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("SC/score:theme_override_fonts/font:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ 120, 110, 100 ]
+"values": [120, 110, 100]
 }
 
-[sub_resource type="DynamicFont" id=1]
-size = 100
-font_data = ExtResource( 3 )
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fsewe"]
+_data = {
+"RESET": SubResource("12"),
+"shock": SubResource("16"),
+"tween": SubResource("13")
+}
 
-[sub_resource type="DynamicFont" id=2]
-size = 50
-font_data = ExtResource( 3 )
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("3")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/32/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/32/0/kerning_overrides/32/0 = Vector2(0, 0)
 
-[sub_resource type="DynamicFont" id=7]
-size = 30
-font_data = ExtResource( 3 )
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("3")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/36/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/36/0/ascent = 0.0
+cache/0/36/0/descent = 0.0
+cache/0/36/0/underline_position = 0.0
+cache/0/36/0/underline_thickness = 0.0
+cache/0/36/0/scale = 1.0
+cache/0/36/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/36/0/kerning_overrides/36/0 = Vector2(0, 0)
+cache/0/36/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+cache/0/12/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/36/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/12/0 = Vector2(0, 0)
 
-[sub_resource type="DynamicFont" id=14]
-size = 50
-font_data = ExtResource( 3 )
+[sub_resource type="FontFile" id="7"]
+fallbacks = Array[Font]([ExtResource("3")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[sub_resource type="DynamicFont" id=4]
-size = 100
-font_data = ExtResource( 3 )
+[sub_resource type="FontFile" id="14"]
+fallbacks = Array[Font]([ExtResource("3")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/36/0 = Vector2(0, 0)
+cache/0/36/0/ascent = 0.0
+cache/0/36/0/descent = 0.0
+cache/0/36/0/underline_position = 0.0
+cache/0/36/0/underline_thickness = 0.0
+cache/0/36/0/scale = 1.0
+cache/0/36/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/36/0/kerning_overrides/36/0 = Vector2(0, 0)
 
-[sub_resource type="DynamicFont" id=11]
-size = 50
-font_data = ExtResource( 3 )
+[sub_resource type="FontFile" id="4"]
+fallbacks = Array[Font]([ExtResource("3")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/36/0 = Vector2(0, 0)
+cache/0/36/0/ascent = 0.0
+cache/0/36/0/descent = 0.0
+cache/0/36/0/underline_position = 0.0
+cache/0/36/0/underline_thickness = 0.0
+cache/0/36/0/scale = 1.0
+cache/0/36/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/36/0/kerning_overrides/36/0 = Vector2(0, 0)
 
-[sub_resource type="Environment" id=15]
+[sub_resource type="FontFile" id="11"]
+fallbacks = Array[Font]([ExtResource("3")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/48/0 = Vector2(0, 0)
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/32/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/32/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/32/0/kerning_overrides/48/0 = Vector2(0, 0)
+cache/0/48/0/ascent = 0.0
+cache/0/48/0/descent = 0.0
+cache/0/48/0/underline_position = 0.0
+cache/0/48/0/underline_thickness = 0.0
+cache/0/48/0/scale = 1.0
+cache/0/48/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/48/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/48/0/kerning_overrides/48/0 = Vector2(0, 0)
+
+[sub_resource type="Environment" id="15"]
 background_mode = 4
 background_canvas_max_layer = 5
 glow_enabled = true
 glow_blend_mode = 0
 glow_hdr_threshold = 1.27
-glow_high_quality = true
 
 [node name="Main" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="player" parent="." instance=ExtResource( 2 )]
+[node name="player" parent="." instance=ExtResource("2")]
 collision_layer = 3
 mass = 1.0
 
 [node name="Camera2D2" type="Camera2D" parent="player"]
-current = true
-zoom = Vector2( 1.5, 1.5 )
+zoom = Vector2(1.5, 1.5)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="player"]
-stream = ExtResource( 4 )
+stream = ExtResource("4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.0
-margin_top = -2.0
-margin_right = 1.0
-margin_bottom = -2.0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="shockwave" type="ColorRect" parent="CanvasLayer/Control"]
-material = ExtResource( 11 )
+material = ExtResource("11")
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 1, 1, 1, 0 )
+color = Color(1, 1, 1, 0)
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0 )
+color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control"]
-anims/RESET = SubResource( 12 )
-anims/shock = SubResource( 16 )
-anims/tween = SubResource( 13 )
+libraries = {
+"": SubResource("AnimationLibrary_fsewe")
+}
 
 [node name="SC" type="VBoxContainer" parent="CanvasLayer/Control"]
-margin_right = 339.0
-margin_bottom = 289.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_left = -1.0
+offset_top = 64.0
+offset_right = 199.0
+offset_bottom = 250.0
 
 [node name="score" type="Label" parent="CanvasLayer/Control/SC"]
-margin_right = 339.0
-margin_bottom = 149.0
-rect_min_size = Vector2( 330, 145 )
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
 size_flags_stretch_ratio = 20.0
-custom_fonts/font = SubResource( 1 )
+theme_override_fonts/font = SubResource("1")
+theme_override_font_sizes/font_size = 32
 text = "00000"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="highscore" type="Label" parent="CanvasLayer/Control/SC"]
-margin_top = 153.0
-margin_right = 339.0
-margin_bottom = 228.0
-rect_min_size = Vector2( 150, 70 )
-custom_fonts/font = SubResource( 2 )
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 2
+theme_override_fonts/font = SubResource("2")
+theme_override_font_sizes/font_size = 16
 text = "00000"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="fpstxt" type="Label" parent="CanvasLayer/Control/SC"]
-margin_top = 232.0
-margin_right = 339.0
-margin_bottom = 277.0
-rect_min_size = Vector2( 80, 45 )
-custom_fonts/font = SubResource( 7 )
+custom_minimum_size = Vector2(80, 45)
+layout_mode = 2
+theme_override_fonts/font = SubResource("7")
 text = "FPS"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="bt" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -227.0
-margin_top = -159.0
-margin_right = 219.0
-margin_bottom = 240.0
-__meta__ = {
-"_edit_group_": true
-}
+offset_left = -227.0
+offset_top = -159.0
+offset_right = 219.0
+offset_bottom = 240.0
 
 [node name="watchad" type="Button" parent="CanvasLayer/Control/bt"]
-margin_right = 446.0
-margin_bottom = 81.0
+layout_mode = 2
 focus_mode = 0
-custom_fonts/font = SubResource( 14 )
-enabled_focus_mode = 0
+theme_override_fonts/font = SubResource("14")
+theme_override_font_sizes/font_size = 36
 text = "WATCH AD"
 flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="replay_button" type="Button" parent="CanvasLayer/Control/bt"]
-margin_top = 85.0
-margin_right = 446.0
-margin_bottom = 240.0
-rect_min_size = Vector2( 280, 140 )
-custom_fonts/font = ExtResource( 6 )
+custom_minimum_size = Vector2(280, 140)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6")
+theme_override_font_sizes/font_size = 36
 text = "REPLAY"
 flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="main_menu_button" type="Button" parent="CanvasLayer/Control/bt"]
-margin_top = 244.0
-margin_right = 446.0
-margin_bottom = 399.0
-rect_min_size = Vector2( 440, 150 )
-custom_fonts/font = SubResource( 4 )
+custom_minimum_size = Vector2(440, 150)
+layout_mode = 2
+theme_override_fonts/font = SubResource("4")
+theme_override_font_sizes/font_size = 36
 text = "MAIN MENU"
 flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="pause" type="Button" parent="CanvasLayer/Control"]
+custom_minimum_size = Vector2(95, 105)
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -220.0
-margin_top = 64.0
-margin_right = -111.0
-margin_bottom = 169.0
-rect_min_size = Vector2( 95, 105 )
+offset_left = -220.0
+offset_top = 64.0
+offset_right = -111.0
+offset_bottom = 169.0
 focus_mode = 0
-icon = ExtResource( 5 )
+icon = ExtResource("5")
 flat = true
 expand_icon = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="showfps" type="Button" parent="CanvasLayer/Control"]
-modulate = Color( 1, 1, 1, 0.862745 )
+modulate = Color(1, 1, 1, 0.862745)
+custom_minimum_size = Vector2(185, 100)
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -256.0
-margin_top = 175.0
-margin_right = -69.0
-margin_bottom = 275.0
-rect_min_size = Vector2( 185, 100 )
+offset_left = -256.0
+offset_top = 175.0
+offset_right = -69.0
+offset_bottom = 275.0
 focus_mode = 0
-custom_fonts/font = SubResource( 11 )
-enabled_focus_mode = 0
+theme_override_fonts/font = SubResource("11")
+theme_override_font_sizes/font_size = 32
 text = "Show FPS"
 flat = true
+icon_alignment = 1
 expand_icon = true
 
 [node name="audio" type="TextureButton" parent="CanvasLayer/Control"]
+layout_mode = 0
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 14.0
-margin_top = -94.0
-margin_right = 95.0
-margin_bottom = -9.0
+offset_left = 14.0
+offset_top = -94.0
+offset_right = 95.0
+offset_bottom = -9.0
+scale = Vector2(0.23, 0.23)
 focus_mode = 0
 toggle_mode = true
-enabled_focus_mode = 0
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
-expand = true
+texture_normal = ExtResource("7")
+texture_pressed = ExtResource("8")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 15 )
+environment = SubResource("15")
 
-[node name="lava" type="Sprite" parent="."]
-modulate = Color( 1.3, 0.5, 0, 1 )
-position = Vector2( 0, 1579 )
-scale = Vector2( 13.7587, 7.33123 )
+[node name="lava" type="Sprite2D" parent="."]
+modulate = Color(1.3, 0.5, 0, 1)
 z_index = 4
-texture = ExtResource( 9 )
+position = Vector2(0, 1579)
+scale = Vector2(13.7587, 7.33123)
+texture = ExtResource("9")
 
 [node name="Node2D" type="Node2D" parent="lava"]
-position = Vector2( 0, -153.999 )
+position = Vector2(0, -153.999)
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
-material = ExtResource( 11 )
-position = Vector2( -807.5, -345 )
-scale = Vector2( 2.534, 1.892 )
-texture = ExtResource( 10 )
+material = ExtResource("11")
+position = Vector2(-807.5, -345)
+scale = Vector2(2.534, 1.892)
+texture = ExtResource("10")
 
 [connection signal="button_down" from="CanvasLayer/Control/bt/watchad" to="." method="_on_watchad_button_down"]
 [connection signal="button_down" from="CanvasLayer/Control/bt/replay_button" to="." method="_on_Button_button_down"]

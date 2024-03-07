@@ -1,11 +1,11 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 
 var i = true
-onready var main = get_parent()
-onready var pos = get_node("Position2D")
-onready var line = get_node("Line2D")
-onready var aud = $AudioStreamPlayer2D
+@onready var main = get_parent()
+@onready var pos = get_node("Marker2D")
+@onready var line = get_node("Line2D")
+@onready var aud = $AudioStreamPlayer2D
 var fixd_rot = Vector2()
 var fixd_dir = Vector2()
 
@@ -24,6 +24,7 @@ func _ready():
 		line.clear_points()
 		fixd_dir = (main.ppos - global_position).normalized() * 20
 		fixd_rot = global_rotation
+		#move_and_collide(fixd_dir)
 
 func _process(delta):
 	if visible && Engine.time_scale != 0:

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsar1ncyviquh"]
+
+[ext_resource type="Script" path="res://scripts/admanager.gd" id="1_awa2d"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_awa2d")

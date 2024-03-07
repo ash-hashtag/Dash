@@ -1,8 +1,8 @@
 extends RigidBody2D
 
-onready var main = get_parent()
-onready var player = get_node("../player")
-onready var scrn = main.scrn
+@onready var main = get_parent()
+@onready var player = get_node("../player")
+@onready var scrn = main.scrn
 
 func _process(_delta):
 	var dir = main.ppos - global_position

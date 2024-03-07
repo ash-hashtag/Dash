@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/mixkit-short-buzzer-sound-2963.wav-f91ddaccba9d270e2ebab62603d17b30.sample"
+type="AudioStreamWAV"
+uid="uid://cnf81j7axmvhc"
+path="res://.godot/imported/mixkit-short-buzzer-sound-2963.wav-f91ddaccba9d270e2ebab62603d17b30.sample"
 
 [deps]
 
 source_file="res://resources/sounds/mixkit-short-buzzer-sound-2963.wav"
-dest_files=[ "res://.import/mixkit-short-buzzer-sound-2963.wav-f91ddaccba9d270e2ebab62603d17b30.sample" ]
+dest_files=["res://.godot/imported/mixkit-short-buzzer-sound-2963.wav-f91ddaccba9d270e2ebab62603d17b30.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

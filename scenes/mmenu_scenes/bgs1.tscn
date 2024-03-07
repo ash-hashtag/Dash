@@ -1,30 +1,28 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://bvlat3yk2bi7b"]
 
-[ext_resource path="res://scenes/mmenu_scenes/bgs1.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://scenes/mmenu_scenes/bgs1.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c6wxl5qjjjt1k" path="res://resources/square.png" id="1_3txsk"]
 
-[sub_resource type="StreamTexture" id=1]
-flags = 4
-load_path = "res://.import/square.png-583bf1a12a33cfd2de1cab2d2f8c3c2e.stex"
+[sub_resource type="Curve" id="3"]
+_data = [Vector2(0, 0), 0.0, 1.31866, 0, 0, Vector2(1, 1), 1.30091, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 0 ), 0.0, 1.31866, 0, 0, Vector2( 1, 1 ), 1.30091, 0.0, 0, 0 ]
+[sub_resource type="Gradient" id="4"]
+colors = PackedColorArray(0, 0, 0, 0, 0, 1, 1, 1)
 
-[sub_resource type="Gradient" id=4]
-colors = PoolColorArray( 0, 0, 0, 0, 0, 1, 1, 1 )
-
-[node name="bgs" type="Sprite"]
-self_modulate = Color( 0, 1.3, 1.3, 1 )
-rotation = 0.523599
-scale = Vector2( 0.16, 0.16 )
+[node name="bgs" type="Sprite2D"]
+self_modulate = Color(0, 1.3, 1.3, 1)
 z_index = -1
-texture = SubResource( 1 )
-script = ExtResource( 1 )
+rotation = 0.523599
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("1_3txsk")
+script = ExtResource("1")
 
 [node name="Line2D" type="Line2D" parent="."]
 z_index = -1
 z_as_relative = false
-points = PoolVector2Array( -1718.75, -12.5, -93.75, 6.25 )
+points = PackedVector2Array(-1718.75, -12.5, -93.75, 6.25)
 width = 250.0
-width_curve = SubResource( 3 )
-default_color = Color( 0.4, 0.501961, 1, 1 )
-gradient = SubResource( 4 )
+width_curve = SubResource("3")
+default_color = Color(0.4, 0.501961, 1, 1)
+gradient = SubResource("4")
