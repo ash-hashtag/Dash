@@ -18,7 +18,7 @@ func _ready():
 		aims[i].visible = false
 	line.gradient.colors[0] = Color(0,0,0,0)
 	line.gradient.colors[1] = Globals.player_col
-	sprite.self_modulate = Globals.player_col * 1.04
+	sprite.self_modulate = Globals.player_col * 1.2
 
 func _process(delta):
 	
@@ -45,7 +45,6 @@ func _process(delta):
 				curpos = _mouse_position()
 				dir = curpos - strtpos
 				var vel = dir * vel
-				print("Moving Player " + str(vel))
 				linear_velocity = vel
 				#move_and_collide(vel)
 				for i in 4:

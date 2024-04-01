@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://c1utx3knit8k5"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1"]
-[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://ciy38vertkdr0" path="res://scenes/player.tscn" id="2"]
 [ext_resource type="FontFile" uid="uid://r1m8evt7twoo" path="res://resources/Oswald-VariableFont_wght.ttf" id="3"]
 [ext_resource type="AudioStream" uid="uid://cnf81j7axmvhc" path="res://resources/sounds/mixkit-short-buzzer-sound-2963.wav" id="4"]
 [ext_resource type="Texture2D" uid="uid://coypsgwrk3yp3" path="res://resources/pause_sign.png" id="5"]
@@ -87,6 +87,7 @@ cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/16/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/64/0 = Vector2(0, 0)
 cache/0/32/0/ascent = 0.0
 cache/0/32/0/descent = 0.0
 cache/0/32/0/underline_position = 0.0
@@ -94,6 +95,15 @@ cache/0/32/0/underline_thickness = 0.0
 cache/0/32/0/scale = 1.0
 cache/0/32/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/32/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/32/0/kerning_overrides/64/0 = Vector2(0, 0)
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
+cache/0/64/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/64/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/64/0/kerning_overrides/64/0 = Vector2(0, 0)
 
 [sub_resource type="FontFile" id="2"]
 fallbacks = Array[Font]([ExtResource("3")])
@@ -105,6 +115,7 @@ cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/16/0/kerning_overrides/36/0 = Vector2(0, 0)
 cache/0/16/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/32/0 = Vector2(0, 0)
 cache/0/36/0/ascent = 0.0
 cache/0/36/0/descent = 0.0
 cache/0/36/0/underline_position = 0.0
@@ -113,6 +124,7 @@ cache/0/36/0/scale = 1.0
 cache/0/36/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/36/0/kerning_overrides/36/0 = Vector2(0, 0)
 cache/0/36/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/36/0/kerning_overrides/32/0 = Vector2(0, 0)
 cache/0/12/0/ascent = 0.0
 cache/0/12/0/descent = 0.0
 cache/0/12/0/underline_position = 0.0
@@ -121,6 +133,16 @@ cache/0/12/0/scale = 1.0
 cache/0/12/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/12/0/kerning_overrides/36/0 = Vector2(0, 0)
 cache/0/12/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/32/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/32/0/kerning_overrides/36/0 = Vector2(0, 0)
+cache/0/32/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/32/0/kerning_overrides/32/0 = Vector2(0, 0)
 
 [sub_resource type="FontFile" id="7"]
 fallbacks = Array[Font]([ExtResource("3")])
@@ -193,11 +215,9 @@ cache/0/48/0/kerning_overrides/32/0 = Vector2(0, 0)
 cache/0/48/0/kerning_overrides/48/0 = Vector2(0, 0)
 
 [sub_resource type="Environment" id="15"]
-background_mode = 4
-background_canvas_max_layer = 5
+background_mode = 3
 glow_enabled = true
-glow_blend_mode = 0
-glow_hdr_threshold = 1.27
+glow_blend_mode = 1
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1")
@@ -256,7 +276,7 @@ custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_stretch_ratio = 20.0
 theme_override_fonts/font = SubResource("1")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 64
 text = "00000"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -265,7 +285,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(150, 20)
 layout_mode = 2
 theme_override_fonts/font = SubResource("2")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 32
 text = "00000"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -346,13 +366,15 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="audio" type="TextureButton" parent="CanvasLayer/Control"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 14.0
-offset_top = -94.0
-offset_right = 95.0
-offset_bottom = -9.0
+offset_left = 95.0
+offset_top = -194.0
+offset_right = 549.0
+offset_bottom = 326.0
+grow_vertical = 0
 scale = Vector2(0.23, 0.23)
 focus_mode = 0
 toggle_mode = true

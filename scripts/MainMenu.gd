@@ -16,11 +16,8 @@ var bgs = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("Game Init")
 	randomize()
-	var c = OnInitializationCompleteListener.new()
-	c.on_initialization_complete = _on_admob_initialized
-	MobileAds.initialize(c)
-	print("Initialing Admob")
 	
 	if !Globals.audio: $Control/TextureButton.button_pressed = true
 	pplabel.visible = false
@@ -47,13 +44,7 @@ func _ready():
 		call_deferred("add_child", bgb.instantiate())
 		call_deferred("add_child", bgr.instantiate())
 	timer.queue_free()
-	
 
-
-func _on_admob_initialized(status):
-	print("Admob Initialized " + str(status))
-	Admanager.load_ads()
-	
 
 func _on_Button_button_down():
 	get_tree().change_scene_to_file("res://scenes/Main.tscn")
